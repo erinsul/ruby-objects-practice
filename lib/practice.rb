@@ -20,7 +20,7 @@ module MBTA
           return green
         elsif line == 'Orange'
         return orange
-      end
+        end
       end
 
       def stops_between_stations(start_line, start_station, end_line, end_station)
@@ -35,34 +35,5 @@ module MBTA
             @line2_dist + @line1_dist
           end
       end
-
-      # return true if handling multiple intersections
-      def self.stretch
-      end
     end
-    # One line, all the stations on that line
-    class Line
-      attr_reader :stations, :name
-      def initialize(name)
-        @name = name
-        @line_stations = []
-      end
-      def add_stations
-        @line_stations << Station.sort_stations(name)
-      end
-    end
-    # One station
-    class Station
-      @@stations = []
-      attr_reader :name, :line
-      def initialize(name, line)
-        @name = name
-        @line = line
-        @@stations << self
-      end
-      def self.sort_stations(name)
-        @@stations.select { |station| station.line == name }
-      end
-    end
-  end
 end
